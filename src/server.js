@@ -34,7 +34,7 @@ let validarId = (req, res, next) => {
 
 //GET LISTADO
 router.get('/', (req, res) => {
-    res.json(api.getAll());
+    res.render("pages/productos", {productos: api.getAll()})
 })
 
 //GET Carga
@@ -54,7 +54,7 @@ router.post('/', (req, res) => {
         ...req.body
     };
     api.add(producto)
-    res.json(producto);
+    res.redirect("/api/productos")
 })
 
 //PUT
