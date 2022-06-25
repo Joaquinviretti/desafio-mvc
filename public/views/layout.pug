@@ -7,9 +7,26 @@ html
             integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
         )
     body
-        
+        nav(class="navbar navbar-expand-lg navbar-dark bg-dark")
+            div(class="container-fluid")
+                a(class="navbar-brand" href="#")="Gestor"
+                button(
+                    class="navbar-toggler" 
+                    type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" 
+                    aria-label="Toggle navigation"
+                    )
+                    span(class="navbar-toggler-icon")
+                div(
+                    class="collapse navbar-collapse" 
+                    id="navbarNavAltMarkup"
+                )
+                    div(class="navbar-nav")
+                        a(class="nav-link" href="/api/productos/")="Productos"
+                        a(class="nav-link" href="/api/productos/add")="Agregar produdcto"
+
         main(class="container pt-5")
-            block carga
+            block content
         script(
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" 
             crossorigin="anonymous"

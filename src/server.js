@@ -35,8 +35,13 @@ let validarId = (req, res, next) => {
     }
 }
 
-//GET
-router.get('/', (req, res) => {
+//GET listado
+router.get('', (req, res)=> {
+    res.render("productos", {productos: api.getAll()})
+})
+
+//GET add
+router.get('/add', (req, res) => {
     res.render("form")
 })
 
@@ -52,7 +57,7 @@ router.post('/', (req, res) => {
         ...req.body
     };
     api.add(producto)
-    res.json(producto);
+    res.redirect('/api/productos')
 })
 
 //PUT
