@@ -2,7 +2,7 @@ class Api {
     productos = []
 
     add(producto) {
-        producto.id = this.getAll().length;
+        producto.id = this.getAll().length + 1;
         this.productos.push(producto);
         console.log(this.productos);
     }
