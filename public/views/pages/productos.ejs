@@ -10,8 +10,14 @@
     
     <%- include('../partials/navbar') %>
     <main class="container pt-5">
-        <h1 class="mb-5">Cargar producto</h1>
-        <%- include('../partials/listado', {productos: productos}) %>
+        <h1 class="mb-5">Listado de producto</h1>
+        <% if(productos.length) { %>
+            <%- include('../partials/listado', {productos: productos}) %>
+        <%} else{ %>
+            <div class="alert alert-warning" role="alert">
+                No hay productos para mostrar.
+            </div>
+        <% } %>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
