@@ -17,6 +17,11 @@ app.use(express.static(path.join(__dirname, '..', './public')))
 const router = Router();
 app.use('/api/productos', router)
 
+//PUG
+
+app.set("view engine", "pug")
+app.set("views", path.join(__dirname, "..", "./public/views"))
+
 
 //MIDDLEWARE para validad ID
 let validarId = (req, res, next) => {
@@ -32,7 +37,7 @@ let validarId = (req, res, next) => {
 
 //GET
 router.get('/', (req, res) => {
-    res.json(api.getAll());
+    res.render("form")
 })
 
 //GET params
