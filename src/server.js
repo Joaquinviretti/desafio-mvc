@@ -17,6 +17,8 @@ app.use(express.static(path.join(__dirname, '..', './public')))
 const router = Router();
 app.use('/api/productos', router)
 
+app.set("view engine", "ejs")
+app.set("views", path.join(__dirname, "..", "./public/views"))
 
 //MIDDLEWARE para validad ID
 let validarId = (req, res, next) => {
@@ -30,9 +32,14 @@ let validarId = (req, res, next) => {
     }
 }
 
-//GET
+//GET LISTADO
 router.get('/', (req, res) => {
     res.json(api.getAll());
+})
+
+//GET Carga
+router.get('/add', (req, res) => {
+    res.render('pages/carga.ejs')
 })
 
 //GET params
