@@ -1,6 +1,8 @@
 const express = require('express');
-const Api = require('./api')
-const path = require('path')
+const Api = require('./api');
+const path = require('path');
+
+const { engine } = require('express-handlebars');
 
 let api = new Api()
 
@@ -17,6 +19,21 @@ app.use(express.static(path.join(__dirname, '..', './public')))
 const router = Router();
 app.use('/api/productos', router)
 
+//HBS
+
+app.engine(
+    'hbs', engine({
+        extname:"hbs",
+        defaultLayout:"main.hbs",
+        layoutsDir: path.join(__dirname, "..", "./public/views/layouts"),
+        partialsDir: path.join(__dirname, "..", "./public/views/partials")
+    }) 
+)
+
+app.use(express.static('../public'))
+
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, '..', 'public/views'))
 
 //MIDDLEWARE para validad ID
 let validarId = (req, res, next) => {
@@ -32,7 +49,12 @@ let validarId = (req, res, next) => {
 
 //GET
 router.get('/', (req, res) => {
-    res.json(api.getAll());
+    res.render('productos', {productos: api.getAll()})
+})
+
+//GET Form Carga
+router.get('/add', (req, res) => {
+    res.render('carga')
 })
 
 //GET params
@@ -47,7 +69,7 @@ router.post('/', (req, res) => {
         ...req.body
     };
     api.add(producto)
-    res.json(producto);
+    res.redirect('/api/productos/')
 })
 
 //PUT
