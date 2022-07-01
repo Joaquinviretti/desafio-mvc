@@ -20,7 +20,7 @@ app.use('/api/productos', router)
 //PUG
 
 app.set("view engine", "pug")
-app.set("views", path.join(__dirname, "..", "./public/views"))
+app.set("views", path.join(__dirname, "..", "./views"))
 
 
 //MIDDLEWARE para validad ID
