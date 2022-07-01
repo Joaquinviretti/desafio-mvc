@@ -18,7 +18,7 @@ const router = Router();
 app.use('/api/productos', router)
 
 app.set("view engine", "ejs")
-app.set("views", path.join(__dirname, "..", "./public/views"))
+app.set("views", path.join(__dirname, "..", "./views"))
 
 //MIDDLEWARE para validad ID
 let validarId = (req, res, next) => {
